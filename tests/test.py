@@ -7,7 +7,10 @@ from you_get.extractors import (
     magisto,
     youtube,
     missevan,
-    acfun
+    acfun,
+    bilibili,
+    soundcloud,
+    tiktok
 )
 
 
@@ -20,13 +23,6 @@ class YouGetTests(unittest.TestCase):
             'http://www.magisto.com/album/video/f3x9AAQORAkfDnIFDA',
             info_only=True
         )
-
-    def test_missevan(self):
-        missevan.download('https://m.missevan.com/sound/1285995', info_only=True)
-        missevan.download_playlist(
-            'https://www.missevan.com/mdrama/drama/24130', info_only=True)
-        missevan.download_playlist(
-            'https://www.missevan.com/albuminfo/203090', info_only=True)
 
     def test_youtube(self):
         youtube.download(
@@ -43,6 +39,30 @@ class YouGetTests(unittest.TestCase):
 
     def test_acfun(self):
         acfun.download('https://www.acfun.cn/v/ac11701912', info_only=True)
+
+    def test_bilibil(self):
+        bilibili.download(
+            "https://www.bilibili.com/watchlater/#/BV1PE411q7mZ/p6", info_only=True
+        )
+        bilibili.download(
+            "https://www.bilibili.com/watchlater/#/av74906671/p6", info_only=True
+        )
+
+    def test_soundcloud(self):
+        ## single song
+        soundcloud.download(
+            'https://soundcloud.com/keiny-pham/impure-bird', info_only=True
+        )
+        ## playlist
+        #soundcloud.download(
+        #    'https://soundcloud.com/anthony-flieger/sets/cytus', info_only=True
+        #)
+
+    def tests_tiktok(self):
+        tiktok.download('https://www.tiktok.com/@nmb48_official/video/6850796940293164290', info_only=True)
+        tiktok.download('https://t.tiktok.com/i18n/share/video/6850796940293164290/', info_only=True)
+        tiktok.download('https://vt.tiktok.com/UGJR4R/', info_only=True)
+
 
 if __name__ == '__main__':
     unittest.main()
